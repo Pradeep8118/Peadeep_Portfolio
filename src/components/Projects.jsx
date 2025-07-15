@@ -1,7 +1,7 @@
 import React from "react";
 import blinkit from "../assets/blinkit.png";
 import Nexcent from "../assets/Nexcent.png";
-import movie from "../assets/movie.png";
+import tability from "../assets/tability.png"
 
 const projects = [
   {
@@ -17,16 +17,16 @@ const projects = [
     name: "Nexcent",
     technologies: "Html/Css",
     image: Nexcent,
-    github: "https://github.com/Pradeep8118/Nexcent",
-    preview: "https://lnkd.in/eQh78JWv",
+    github: "https://lnkd.in/eQh78JWv",
+    preview: "https://nexcent-pradeep.netlify.app/",
   },
   {
     id: 3,
-    name: "Movie App",
-    technologies: "MERN Stack",
-    image: movie,
-    github: "https://github.com/Pradeep8118/MERN02M002/tree/main/July/Movie%20App/frontend",
-    preview: "https://your-movie-app-preview-link.com", // Replace with actual preview link if available
+    name: "Tability",
+    technologies: "Html/Css",
+    image: tability,
+    github: "https://github.com/Pradeep8118/MERN02M002/tree/main/June/Week2/Tability%20Raja%20Assignment",
+    preview: "https://tabilityqlith.netlify.app/", // Replace with actual preview link if available
   },
 ];
 
