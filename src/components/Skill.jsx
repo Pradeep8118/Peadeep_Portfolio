@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 import {
   FaCode,
   FaFigma,
@@ -23,23 +26,39 @@ const skills = [
 ];
 
 const SkillSection = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: false,
+      offset: 60,
+    });
+
+    const handlePageShow = () => AOS.refreshHard();
+    window.addEventListener("pageshow", handlePageShow);
+    return () => window.removeEventListener("pageshow", handlePageShow);
+  }, []);
+
   return (
     <section
       id="skills"
-      className="bg-black text-white py-20 px-6 sm:px-10 md:px-16 lg:px-24"
+      className="bg-gradient-to-b from-black to-[#121111] text-white py-16 sm:py-20 px-4 sm:px-6 lg:px-12"
     >
-      <h2 className="text-center text-4xl font-extrabold mb-12 tracking-tight">
+      <h2 className="text-center text-3xl sm:text-4xl font-extrabold mb-10 sm:mb-14 tracking-tight">
         🛠 My Skills
       </h2>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 sm:gap-8 max-w-6xl mx-auto">
         {skills.map((skill, index) => (
           <div
             key={index}
-            className="flex flex-col items-center justify-center bg-white/5 p-5 rounded-xl border border-white/10 hover:border-indigo-500 hover:shadow-indigo-500/30 shadow-md hover:scale-105 transition duration-300 text-center"
+            data-aos="zoom-in-up"
+            data-aos-delay={index * 100}
+            className="flex flex-col items-center justify-center bg-white/10 p-5 sm:p-6 rounded-2xl border border-white/5 hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/20 transition duration-300 hover:scale-105"
           >
             <div className="text-4xl mb-3">{skill.icon}</div>
-            <p className="text-base text-gray-200 font-medium">{skill.name}</p>
+            <p className="text-base sm:text-lg text-gray-300 font-medium break-words whitespace-normal text-center">
+              {skill.name}
+            </p>
           </div>
         ))}
       </div>

@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { FaBriefcase } from "react-icons/fa";
 
 const ExperiencePage = () => {
+  useEffect(() => {
+    AOS.init({ duration: 1000, once: false, offset: 80 });
+    window.addEventListener("pageshow", () => AOS.refreshHard());
+  }, []);
+
   const experience = {
-    title: "MERN STACK Devloper Intern",
+    title: "MERN STACK Developer Intern",
     company: "QLITH INNOVATION PVT. LTD. BBSR",
     period: "June 2025 - July 2025",
     description:
@@ -12,14 +19,20 @@ const ExperiencePage = () => {
   };
 
   return (
-    <section  id="experience" className="bg-gradient-to-b from-black via-neutral-900 to-black text-white py-20 px-6">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-4xl font-extrabold text-center mb-12">
+    <section
+      id="experience"
+      className="bg-gradient-to-b from-black via-neutral-900 to-black text-white py-20 px-4 sm:px-6 md:px-12 lg:px-24"
+    >
+      <div className="max-w-5xl mx-auto">
+        <h2 className="text-4xl sm:text-5xl font-extrabold text-center mb-12">
           💼 My Experience
         </h2>
 
         {/* Experience Card */}
-        <div className="bg-white/5 backdrop-blur border border-white/10 rounded-3xl shadow-xl hover:shadow-indigo-500/20 transition duration-300 p-6 md:p-8 flex flex-col sm:flex-row gap-6 items-start">
+        <div
+          data-aos="fade-up"
+          className="bg-white/5 backdrop-blur border border-white/10 rounded-3xl shadow-xl hover:shadow-indigo-500/20 transition duration-300 px-6 py-8 sm:px-8 sm:py-10 md:p-10 flex flex-col sm:flex-row items-center sm:items-start gap-6"
+        >
           {/* Logo */}
           <div className="flex-shrink-0">
             <img
@@ -30,17 +43,22 @@ const ExperiencePage = () => {
           </div>
 
           {/* Info */}
-          <div className="flex-1">
-            <div className="flex items-center gap-3 mb-2">
-              <FaBriefcase className="text-indigo-500 text-xl" />
-              <h3 className="text-xl font-semibold">{experience.title}</h3>
+          <div className="flex-1 w-full">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+              <div className="flex items-center gap-3 mb-2 sm:mb-0">
+                <FaBriefcase className="text-indigo-500 text-xl" />
+                <h3 className="text-xl sm:text-2xl font-semibold">
+                  {experience.title}
+                </h3>
+              </div>
+              <span className="inline-block text-xs bg-indigo-600/80 px-3 py-1 rounded-full text-white whitespace-nowrap">
+                {experience.period}
+              </span>
             </div>
-            <p className="text-gray-300 text-sm">{experience.company}</p>
-            <span className="mt-1 inline-block text-xs bg-indigo-600/80 px-3 py-1 rounded-full text-white">
-              {experience.period}
-            </span>
 
-            <p className="text-gray-400 mt-4 leading-relaxed text-sm md:text-base">
+            <p className="text-gray-300 text-sm mb-1">{experience.company}</p>
+
+            <p className="text-gray-400 mt-4 leading-relaxed text-sm sm:text-base">
               {experience.description}
             </p>
           </div>
